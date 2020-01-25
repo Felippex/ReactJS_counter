@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Counter.css";
 import { Card } from "react-bootstrap";
-import StepInput from "./inputStep/InputStep";
+// import StepInput from "./inputStep/InputStep";
 import ButtonThree from "./button/Button";
 
 class Counter extends Component {
@@ -14,16 +14,9 @@ class Counter extends Component {
       alert("to nie jest liczba");
     }
 
-    let napis = "";
-    if (this.props.test === undefined) {
-      napis = "";
-    } else {
-      napis = this.props.test;
-    }
-    // let step = this._inputStep.value;
     this.state = {
       counterView: number,
-      napisView: napis
+      inputStep: 0
     };
   }
 
@@ -33,11 +26,16 @@ class Counter extends Component {
     });
   };
   updateStep = () => {
-    this.setState({});
-  };
-  addOnetoCounter = () => {
     this.setState({
-      counterView: this.state.counterView + 1
+      inputStep: parseInt(this.inputStep.value)
+    });
+  };
+  addSteptoCounter = () => {
+    console.log(this._inputStep.value);
+
+    this.setState({
+      counterView: this.state.counterView + parseInt(this._inputStep.value),
+      inputStep: this._inputStep.value
     });
   };
 
@@ -50,21 +48,23 @@ class Counter extends Component {
   // funkcja render "publikuje" kod
   render() {
     return (
-      <div>
-        <Card>
+      <div className="main-div">
+        <Card className="my-card">
           <Card.Body>
             {`${this.props.name}, wartość równa: ${this.state.counterView} ${this.state.napisView}`}
           </Card.Body>
           <ButtonThree
             resetCounterProps={this.resetCounter}
-            addOnetoCounterProps={this.addOnetoCounter}
+            addSteptoCounterProps={this.addSteptoCounter}
             resetToInitialValueProps={this.resetToInitialValue}
           />
-          <StepInput
+          <p className="step">Krok: </p>
+          <input
+            type="number"
             ref={data => {
               this._inputStep = data;
             }}
-            updateStepProps={this.updateStep}
+            value={this.state._inputStep}
           />
         </Card>
       </div>

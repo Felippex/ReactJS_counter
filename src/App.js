@@ -8,7 +8,7 @@ import Counter from "./Counter";
 function App() {
   return (
     <div className="App">
-      <Counter name="Licznik" value="108" test="właściwy"></Counter>
+      <Counter name="Licznik główny" value="108"></Counter>
       <Counter name="Licznik drugi" value="0"></Counter>
     </div>
   );

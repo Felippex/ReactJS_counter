@@ -8,7 +8,7 @@ const ButtonThree = props => {
       <Button
         className="main-button"
         variant="primary"
-        onClick={props.addOnetoCounterProps}
+        onClick={props.addSteptoCounterProps}
       >
         Dodaj krok
       </Button>

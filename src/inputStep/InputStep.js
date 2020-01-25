@@ -6,7 +6,11 @@ const StepInput = props => {
   return (
     <div>
       <p>Krok</p>
-      <input type="number" onChange={props.updateStepProps} />
+      <input
+        ref={props._inputStep}
+        type="number"
+        onChange={props.updateStepProps}
+      />
     </div>
   );
 };
