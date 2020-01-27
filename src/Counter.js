@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./Counter.css";
 import { Card } from "react-bootstrap";
-// import StepInput from "./inputStep/InputStep";
 import ButtonThree from "./button/Button";
 
 class Counter extends Component {
@@ -27,15 +26,12 @@ class Counter extends Component {
   };
   updateStep = () => {
     this.setState({
-      inputStep: parseInt(this.inputStep.value)
+      inputStep: parseInt(this._inputStep.value)
     });
   };
   addSteptoCounter = () => {
-    console.log(this._inputStep.value);
-
     this.setState({
-      counterView: this.state.counterView + parseInt(this._inputStep.value),
-      inputStep: this._inputStep.value
+      counterView: this.state.counterView + parseInt(this.state.inputStep)
     });
   };
 
@@ -51,7 +47,7 @@ class Counter extends Component {
       <div className="main-div">
         <Card className="my-card">
           <Card.Body>
-            {`${this.props.name}, wartość równa: ${this.state.counterView} ${this.state.napisView}`}
+            {`${this.props.name}, wartość równa: ${this.state.counterView}`}
           </Card.Body>
           <ButtonThree
             resetCounterProps={this.resetCounter}
@@ -65,6 +61,7 @@ class Counter extends Component {
               this._inputStep = data;
             }}
             value={this.state._inputStep}
+            onChange={this.updateStep}
           />
         </Card>
       </div>
